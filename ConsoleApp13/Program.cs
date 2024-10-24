@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -22,10 +22,12 @@ class Program
 
             if (secim == "Meyve")
             {
+                Console.Clear();
                 Listele(meyveler);
             }
             else if (secim == "Sebze")
             {
+                Console.Clear();
                 Listele(sebzeler);
             }
             else
@@ -37,10 +39,10 @@ class Program
 
             Console.Write("Seçtiğiniz Ürünü Giriniz : ");
             string urun = Console.ReadLine();
-
+            Console.Clear();
             if (meyveler.Contains(urun) || sebzeler.Contains(urun))
             {
-                Console.Write("Kaç Kilo Vereyim Abime ? ");
+                Console.Write("Kaç Kilo Vereyim Abime ?\nKilo Giriniz : ");
                 int kilo;
                 bool kilo1 = int.TryParse(Console.ReadLine(), out kilo);
                 if (kilo1 && kilo > 0)
@@ -54,7 +56,7 @@ class Program
                         alinanUrunler[urun] = kilo;
                     }
 
-                    Console.Write("Başka Bir Şey İster Misin Abim ? (Evet/Hayır) ");
+                    Console.Write("Başka Bir Şey İster Misin Abim ? (Evet/Hayır)\n -->  ");
                     string devam = Console.ReadLine();
                     devamet = (devam.ToUpper() == "EVET");
                 }
@@ -90,7 +92,7 @@ class Program
 
             if (alinanUrunler.ContainsKey(satisUrun))
             {
-                Console.Write("Kaç Kilo Satmak İstiyorsunuz ? ");
+                Console.Write("Kaç Kilo Satmak İstiyorsunuz ?\nKilo Giriniz : ");
                 int satisKilo;
                 bool satisGecerlilik = int.TryParse(Console.ReadLine(), out satisKilo);
                 if (satisGecerlilik && satisKilo > 0)
@@ -110,7 +112,7 @@ class Program
 
                         Console.WriteLine($"{satisUrun} - {satisKilo} kg satıldı. Afiyet Olsun!");
                         Thread.Sleep(2000);
-
+                        Console.Clear();
                         if (alinanUrunler[satisUrun] == 0)
                         {
                             alinanUrunler.Remove(satisUrun);
@@ -134,7 +136,7 @@ class Program
                 Thread.Sleep(2000);
             }
 
-            Console.Write("Başka Bir Satış Yapmak İster Misiniz? (Evet/Hayır) ");
+            Console.Write("Başka Bir Satış Yapmak İster Misiniz? (Evet/Hayır)\n -->  ");
             string satisCevap = Console.ReadLine();
             satisDevam = (satisCevap.ToUpper() == "EVET");
             Console.Clear();
@@ -142,6 +144,7 @@ class Program
 
         Console.WriteLine("İyi Satışlar Dilerim!");
         Thread.Sleep(2000);
+        Console.Clear();
         Console.WriteLine("Satılan Ürünler:");
         foreach (var urun in satilanUrunler)
         {
